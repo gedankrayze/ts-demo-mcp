@@ -1,0 +1,17 @@
+version: '3'
+
+tasks:
+  start:
+    desc: Start the MCP server
+    cmds:
+      - bun run src/index.ts
+
+  inspect:
+    desc: Inspect the MCP server capabilities
+    cmds:
+      - echo '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"0.1.0","capabilities":{"roots":{"listChanged":true}},"clientInfo":{"name":"mcp-client","version":"0.1.0"}}}' | bun run src/index.ts
+
+  inspect-server:
+    desc: Inspect the MCP server capabilities with a specific server
+    cmds:
+      - bunx @modelcontextprotocol/inspector bun src/index.ts
